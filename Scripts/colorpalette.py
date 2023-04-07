@@ -12,6 +12,7 @@ for i in range(len(colortext)): #strings into ints, rounds to 12-bit coloration 
         if (j>0):
             colortext[i][j] = int(colortext[i][j])
             colortext[i][j] = math.floor(colortext[i][j] / 16)
+print(colortext)
 
 
 # colors = {}
