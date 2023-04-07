@@ -2,11 +2,11 @@ import numpy as np
 import matplotlib.pyplot as plt
 #does referencing like this work lol
 import sys
-np.set_printoptions(threshold=sys.maxsize)
 
 image = plt.imread('/Users/liz/Library/CloudStorage/OneDrive-Personal/Desktop/After Glitch/Desktop/385finalproject/Assets/Dog1/AssetsDog.png')
 
 x,y,z = image.shape
+np.set_printoptions(threshold=sys.maxsize, linewidth = y*4)
 
 bw = np.zeros((x,y))
 
@@ -43,7 +43,7 @@ for i in range(len(bw)):
                  colormap[i][j] = 5
             # if (image[i][j]) == 0: #TAN
             #      image[i][j] == 6
-            if (bw[i][j]) == 0.5369986: #BLUE
+            if (bw[i][j]) > 0.536 and (bw[i][j]) < .537: #BLUE
                  colormap[i][j] = 7
             # if (image[i][j]) == 0: #LIGHTGREEN
             #      image[i][j] == 8    
@@ -56,4 +56,18 @@ for i in range(len(bw)):
 
         # sum = sum/3
         # zeros[i][j] = sum
+    # print(colormap[i])
+print(x)
+print(y)
+print(len(colormap[i]))
+
 print(colormap)
+# colormapstr = np.array2string(colormap, max_line_width = len(colormap[i]))
+colormapstr = np.array2string(colormap)
+
+
+with open('/Users/liz/OneDrive/Desktop/After Glitch/Desktop/385finalproject/Sprites/sprites.sv', 'a') as spritefile:
+    spritefile.write("\n module font_rom ( input [10:0]	addr, \n output [7:0]	data \n); \n \n	parameter ADDR_WIDTH = 11; \n   parameter DATA_WIDTH =  8; \n	logic [ADDR_WIDTH-1:0] addr_reg; \n				 \n	// ROM definition				 \n	parameter [0:2**ADDR_WIDTH-1][DATA_WIDTH-1:0] ROM = ")
+    spritefile.write(colormapstr)
+    spritefile.write("}; \n \n	assign data = ROM[addr]; \n \n endmodule  ")
+    spritefile.close
