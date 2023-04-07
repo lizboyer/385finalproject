@@ -5,15 +5,15 @@ Color Palette:
 Duck(Green)
 Black: Duh
 Green: 
-	R:21
-	G:58
-	B:10
+	R:21 0001 
+	G:58 0011 
+	B:10 0000 
 Pink:
 	R:240
 	G:120
 	B:103
 Brown(Light): 
-	R:146
+	R:146 
 	G:78
 	B:27
 Brown(Dark): 
